@@ -31,8 +31,8 @@ const io = socketIo(server, {
 app.use(cors());
 
 // Rutas de tu API
-app.get('/api', (req, res) => {
-  res.json({ message: "¡API funcionando!" }); // Respuesta básica de prueba
+app.get('/ping', (req, res) => {
+  res.json({ message: "pong" }); // Respuesta básica de prueba
 });
 
 // Cuando un jugador se conecta
@@ -52,8 +52,6 @@ io.on('connection', (socket) => {
     console.log('Un jugador se ha desconectado');
   });
 });
-
-app.get('/')
 
 // Iniciar el servidor en el puerto 3001
 server.listen(3001, () => {
