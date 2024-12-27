@@ -1,0 +1,18 @@
+# Node.js (backend)
+node_modules/
+npm-debug.log
+.env
+
+# React (frontend)
+node_modules/
+build/
+npm-debug.log
+.env
+
+# Archivos de IDE y editor
+.vscode/
+.idea/
+
+# Archivos generados por OS
+.DS_Store
+Thumbs.db

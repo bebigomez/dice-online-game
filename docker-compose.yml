@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Servicio para el Backend (Node.js)
+  backend:
+    build:
+      context: ./backend  # Carpeta donde está tu servidor Node.js
+    ports:
+      - "3001:3001"  # Expone el puerto 3001 del backend
+    networks:
+      - app-network    # Red interna para comunicación entre frontend y backend
+
+  # Servicio para el Frontend (React)
+  frontend:
+    build:
+      context: ./frontend  # Carpeta donde está tu aplicación React
+    ports:
+      - "80:80"  # Expone el puerto 80 en el contenedor (en vez de 5173)
+    networks:
+      - app-network  # Red interna para comunicación entre frontend y backend
+    environment:
+      - REACT_APP_API_URL=http://backend:3001  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
+
+# Red para los servicios
+networks:
+  app-network:
+    driver: bridge
