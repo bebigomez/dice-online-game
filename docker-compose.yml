@@ -16,7 +16,7 @@ services:
     ports:
       - "5173:5173"  # Expone el puerto 80 en el contenedor (en vez de 5173)
     environment:
-      - REACT_APP_API_URL=http://backend:3001/api  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
+      - REACT_APP_API_URL=http://167.172.139.236/socket.io/  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
 
   nginx:
     image: nginx:1.20.1
