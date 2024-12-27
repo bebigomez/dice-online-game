@@ -4,7 +4,7 @@ services:
   # Servicio para el Backend (Node.js)
   backend:
     build:
-      context: ./backend  # Carpeta donde está tu servidor Node.js
+      context: ./dice-game-backend  # Carpeta donde está tu servidor Node.js
     ports:
       - "3001:3001"  # Expone el puerto 3001 del backend
     networks:
@@ -13,7 +13,7 @@ services:
   # Servicio para el Frontend (React)
   frontend:
     build:
-      context: ./frontend  # Carpeta donde está tu aplicación React
+      context: ./dice-game-frontend  # Carpeta donde está tu aplicación React
     ports:
       - "80:80"  # Expone el puerto 80 en el contenedor (en vez de 5173)
     networks:
