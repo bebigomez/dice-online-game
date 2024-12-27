@@ -19,7 +19,7 @@ services:
     networks:
       - app-network  # Red interna para comunicación entre frontend y backend
     environment:
-      - REACT_APP_API_URL=http://backend:3001  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
+      - REACT_APP_API_URL=//backend:3001  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
 
 # Red para los servicios
 networks:
