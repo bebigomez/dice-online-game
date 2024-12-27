@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3001'); // Dirección del servidor backend
+// eslint-disable-next-line no-undef
+const socket = io(process.env.REACT_APP_API_URL); // Dirección del servidor backend
 
 function App() {
   const [diceRoll, setDiceRoll] = useState(null);
