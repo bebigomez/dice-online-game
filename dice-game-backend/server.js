@@ -30,6 +30,11 @@ const io = socketIo(server, {
 // Configurar CORS para el resto de las rutas (si es necesario)
 app.use(cors());
 
+// Rutas de tu API
+app.get('/api', (req, res) => {
+  res.json({ message: "¡API funcionando!" }); // Respuesta básica de prueba
+});
+
 // Cuando un jugador se conecta
 io.on('connection', (socket) => {
   console.log('Un jugador se ha conectado');
@@ -48,7 +53,9 @@ io.on('connection', (socket) => {
   });
 });
 
+app.get('/')
+
 // Iniciar el servidor en el puerto 3001
 server.listen(3001, () => {
-  console.log('Servidor corriendo en http://localhost:3001');
+  console.log('Servidor corriendo');
 });

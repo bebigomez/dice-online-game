@@ -7,21 +7,26 @@ services:
       context: ./dice-game-backend  # Carpeta donde está tu servidor Node.js
     ports:
       - "3001:3001"  # Expone el puerto 3001 del backend
-    networks:
-      - app-network    # Red interna para comunicación entre frontend y backend
+
 
   # Servicio para el Frontend (React)
   frontend:
     build:
       context: ./dice-game-frontend  # Carpeta donde está tu aplicación React
     ports:
-      - "80:80"  # Expone el puerto 80 en el contenedor (en vez de 5173)
-    networks:
-      - app-network  # Red interna para comunicación entre frontend y backend
+      - "5173:5173"  # Expone el puerto 80 en el contenedor (en vez de 5173)
     environment:
-      - REACT_APP_API_URL=//backend:3001  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
+      - REACT_APP_API_URL=http://backend:3001/api  # URL del backend (aquí apuntamos al nombre del servicio 'backend')
 
-# Red para los servicios
-networks:
-  app-network:
-    driver: bridge
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    container_name: reverse-proxy
+    depends_on:
+      - backend # wait for the frontend container to be started
+      - frontend # wait for the backend container to be started
+
+
