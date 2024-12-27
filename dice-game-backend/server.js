@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const allowedOrigins = [
   "http://localhost:5173",  // Frontend en desarrollo
   "http://localhost",  // Frontend en desarrollo
-  "167.172.139.236"      // Si tienes algún subdominio o algún otro frontend
+  "http://167.172.139.236"      // Si tienes algún subdominio o algún otro frontend
 ];
 
 const io = socketIo(server, {
